@@ -39,7 +39,8 @@ Please write a short morning briefing (3-4 paragraphs) that:
 - Notes any implications for UK inflation or monetary policy
 - Is written clearly, like a note from an economist to a colleague
 
-Do not repeat every headline. Focus on what is genuinely significant."""
+Do not repeat every headline. Focus on what is genuinely significant.
+Do not sign off with a name or sign-off phrase. End with your final analytical point."""
 
     return prompt
 
