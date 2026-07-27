@@ -4,6 +4,8 @@ import feedparser
 # Keeping these here means adding a new source later is just one new line.
 FEEDS = {
     "BBC Business": "http://feeds.bbci.co.uk/news/business/rss.xml",
+    "FT": "https://news.google.com/rss/search?q=site:ft.com+economics&hl=en-GB&gl=GB&ceid=GB:en",
+    "Bank of England": "https://www.bankofengland.co.uk/rss/news",
 }
 
 # How many headlines to pull from each feed.
