@@ -1,4 +1,5 @@
 import requests
+from datetime import date
 
 # Ollama runs locally on this port by default.
 OLLAMA_URL = "http://localhost:11434/api/generate"
@@ -7,10 +8,12 @@ OLLAMA_MODEL = "llama3.2"
 
 def build_prompt(prices: dict, headlines: list) -> str:
     """
-    Build the prompt we'll send to Ollama.
-    Takes the prices dictionary and headlines list from our other modules
-    and formats them into a clear briefing request.
+    Build the prompt to send to Ollama.
+    Take the prices dictionary and headlines list from other modules
+    and format them into a clear briefing request.
     """
+    today = date.today().strftime("%A %d %B %Y")
+
     # Format prices into readable lines
     price_lines = "\n".join(
         f"  {name}: {value}" for name, value in prices.items()
@@ -22,7 +25,7 @@ def build_prompt(prices: dict, headlines: list) -> str:
         for i, item in enumerate(headlines)
     )
 
-    prompt = f"""You are a macroeconomic analyst writing a short morning briefing for a UK economics student.
+    prompt = f"""You are a macroeconomic analyst writing a short morning briefing for a UK economics student. Today's date is {today}.
 
 Here are today's market prices:
 {price_lines}
