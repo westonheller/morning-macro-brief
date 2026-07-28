@@ -47,11 +47,11 @@ streamlit run app.py
 
 ## Possible extensions
 
--Email delivery of the morning briefing
--Economic calendar for upcoming releases
--UK gilt yields and additional market indicators
--Historical archive of previous briefings
--Interactive charts and trend visualisations
+- Email delivery of the morning briefing
+- Economic calendar for upcoming releases
+- UK gilt yields and additional market indicators
+- Historical archive of previous briefings
+- Interactive charts and trend visualisations
 
 ## Author
 Weston Heller | Linkedin: www.linkedin.com/in/weston-heller | Email: westonheller145@gmail.com
