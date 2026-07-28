@@ -45,9 +45,13 @@ streamlit run app.py
 - Market prices are Yahoo Finance closing prices so may lag slightly during market hours.
 - UK gilt yields not yet included on the list (no obvious reliable source yet).
 
-## What's next
+## Possible extensions
 
-Thinking about adding email delivery, an economic calendar, and UK gilt yields. Maybe charts eventually.
+- Email delivery of the morning briefing
+- Economic calendar for upcoming releases
+- UK gilt yields and additional market indicators
+- Historical archive of previous briefings
+- Interactive charts and trend visualisations
 
 ## Author
 Weston Heller | Linkedin: www.linkedin.com/in/weston-heller | Email: westonheller145@gmail.com
