@@ -1,8 +1,7 @@
 import yfinance as yf
 
-# Yahoo Finance ticker symbols for the assets we care about.
-# Keeping this as a dictionary means we can change tickers or add new
-# assets in one place, without touching the fetching logic itself.
+# Yahoo Finance ticker symbols for relevent indicators
+# Keep this as a dictionary to change tickers in future
 TICKERS = {
     "FTSE100": "^FTSE",
     "GBP/USD": "GBPUSD=X",
@@ -13,7 +12,7 @@ TICKERS = {
 
 def get_price(ticker: str) -> float:
     """
-    Fetch the most recent closing price for a given ticker symbol.
+    Fetch most recent closing price for a given ticker symbol
     """
     data = yf.Ticker(ticker)
     history = data.history(period="1d")
@@ -23,11 +22,10 @@ def get_price(ticker: str) -> float:
 
 def get_all_prices() -> dict:
     """
-    Fetch the latest price for every asset in TICKERS.
+    Fetch latest price for every indicator in TICKERS
 
     Returns:
-        A dictionary mapping asset name -> latest price.
-        e.g. {"FTSE100": 8234.5, "GBP/USD": 1.27, ...}
+        A dictionary mapping indicator name -> latest price.
     """
     prices = {}
     for name, ticker in TICKERS.items():

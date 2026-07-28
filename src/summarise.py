@@ -1,16 +1,16 @@
 import requests
 from datetime import date
 
-# Ollama runs locally on this port by default.
+# Ollama runs locally on this port by default
 OLLAMA_URL = "http://localhost:11434/api/generate"
 OLLAMA_MODEL = "llama3.2"
 
 
 def build_prompt(prices: dict, headlines: list) -> str:
     """
-    Build the prompt to send to Ollama.
-    Take the prices dictionary and headlines list from other modules
-    and format them into a clear briefing request.
+    Build prompt to send to Ollama.
+    Take prices dictionary and headlines list from other modules
+    and format into a clear briefing request
     """
     today = date.today().strftime("%A %d %B %Y")
 
@@ -33,10 +33,10 @@ Here are today's market prices:
 Here are today's top business headlines:
 {headline_lines}
 
-Please write a short morning briefing (3-4 paragraphs) that:
+Write a short morning briefing (3-4 paragraphs) that:
 - Summarises the most important economic developments
 - Explains what matters most today and why
-- Notes any implications for UK inflation or monetary policy
+- Notes any implications for UK inflation, monetary policy, and the macroeconomy
 - Is written clearly, like a note from an economist to a colleague
 
 Do not repeat every headline. Focus on what is genuinely significant.
@@ -64,23 +64,3 @@ def get_summary(prices: dict, headlines: list) -> str:
         return response.json()["response"]
     else:
         return f"Summary unavailable (Ollama returned status {response.status_code})"
-
-
-if __name__ == "__main__":
-    # Small hardcoded test so we can run this file on its own
-    test_prices = {
-        "FTSE100": 8234.5,
-        "GBP/USD": 1.332,
-        "Brent Crude": 89.0,
-        "US 10yr Treasury Yield": 4.68,
-    }
-
-    test_headlines = [
-        {"source": "BBC Business", "title": "Oil price dives as US and Iran pause attacks"},
-        {"source": "BBC Business", "title": "Shein swings to $99m loss as Trump tariffs hit sales"},
-        {"source": "BBC Business", "title": "Chinese chipmaker shares surge nearly 470% in blockbuster debut"},
-    ]
-
-    print("Generating briefing... (this may take 20-30 seconds)\n")
-    summary = get_summary(test_prices, test_headlines)
-    print(summary)

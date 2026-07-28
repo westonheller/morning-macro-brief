@@ -1,12 +1,16 @@
 import streamlit as st
 from datetime import date
+from datetime import datetime
 from src.markets import get_all_prices
 from src.news import get_headlines
 from src.summarise import get_summary
 
 
 # --- Page config ---
-today = date.today().strftime("%A %d %B %Y")
+now = datetime.now()
+today = now.strftime("%A %d %B %Y")
+time = now.strftime("%H:%M")
+
 st.set_page_config(
     page_title=f"Morning Macro Brief {today}",
     page_icon="📈",
@@ -28,8 +32,8 @@ def load_summary(prices, headlines):
 
 
 # --- Header ---
-st.title("📈 Morning Macro Brief")
-st.caption(f"Good morning! Here's your macroeconomic briefing for {today}")
+st.title(f"📈 Morning Macro Brief {today} {time}")
+st.caption(f"Good morning! Here's your macroeconomic briefing :))")
 st.divider()
 
 # --- Markets ---

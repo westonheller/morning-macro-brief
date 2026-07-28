@@ -1,21 +1,19 @@
 import feedparser
 
-# RSS feed URLs for news sources.
-# Keeping these here means adding a new source later is just one new line.
+# RSS feed URLs for news sources
 FEEDS = {
     "BBC Business": "http://feeds.bbci.co.uk/news/business/rss.xml",
     "FT": "https://news.google.com/rss/search?q=site:ft.com+economics&hl=en-GB&gl=GB&ceid=GB:en",
     "Bank of England": "https://www.bankofengland.co.uk/rss/news",
 }
 
-# How many headlines to pull from each feed.
+# Pull 5 headlines from each feed
 MAX_HEADLINES = 5
 
 
 def clean_title(title: str, source: str) -> str:
     """
-    Remove source name suffixes that RSS feeds often append to titles.
-    e.g. "Why surveys matter - Financial Times" -> "Why surveys matter"
+    Remove source name suffixes RSS often adds to titles.
     """
     suffixes = [
         " - Financial Times",
@@ -30,12 +28,12 @@ def clean_title(title: str, source: str) -> str:
 
 def get_headlines(max_per_feed: int = MAX_HEADLINES) -> list:
     """
-    Fetch the latest headlines from all feeds in FEEDS.
-    Skips dud entries (too short or generic titles).
+    Fetch latest headlines from all feeds in FEEDS
+    Skips dud entries (short or generic titles)
 
     Returns:
-        A list of dictionaries, each containing:
-        - 'source': the feed name (e.g. "BBC Business")
+        List of dictionaries, each containing:
+        - 'source': the feed name
         - 'title': the headline
         - 'link': the URL to the full article
         - 'summary': a short description if available
@@ -49,7 +47,7 @@ def get_headlines(max_per_feed: int = MAX_HEADLINES) -> list:
         for entry in feed.entries[:max_per_feed + 5]:
             title = clean_title(entry.title, source)
 
-            # Skip dud entries with generic or very short titles
+            # Skip dud entries with generic or short titles
             if len(title) < 15 or title in ["Home", "Financial Times", "Reuters", "Home - Financial Times"]:
                 continue
 

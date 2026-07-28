@@ -5,7 +5,7 @@ from src.summarise import get_summary
 
 def format_prices(prices: dict) -> str:
     """
-    Format the prices dictionary into a readable block of text.
+    Format the prices dictionary into a readable block of text
     """
     lines = []
     for name, value in prices.items():
@@ -22,7 +22,7 @@ def format_prices(prices: dict) -> str:
 
 def format_headlines(headlines: list) -> str:
     """
-    Format the headlines list into a numbered block of text.
+    Format the headlines list into a numbered block of text
     """
     lines = []
     for i, item in enumerate(headlines):
@@ -32,7 +32,7 @@ def format_headlines(headlines: list) -> str:
 
 def run_brief():
     """
-    Fetch all data, generate the AI summary, and print the morning brief.
+    Fetch all data, generate the AI summary, and print the morning brief
     """
     print("=" * 60)
     print("        MORNING MACRO BRIEF")
@@ -53,7 +53,7 @@ def run_brief():
     print(format_headlines(headlines))
 
     # --- AI Summary ---
-    print("\nGenerating briefing (this may take 20-30 seconds)...")
+    print("\nGenerating briefing (this may take 20-30 seconds)... :)")
     summary = get_summary(prices, headlines)
     print("\nAI BRIEFING")
     print("-" * 30)
